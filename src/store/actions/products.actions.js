@@ -48,11 +48,15 @@ export function getAllProducts() {
         Axios.get('/products')
             .then(({ data }) => {
                 if (!data.success) return dispatch(getAllFail('Error fetching data!'));
+
                 dispatch(getAllSuccess(data.data.products));
             })
             .catch((error) => {
-                dispatch(getAllFail(error));
-                console.log(error.message);
+                if (error.response?.data) return dispatch(getAllFail(error.response.data.message));
+
+                if (error.message) return dispatch(getAllFail(error.message));
+
+                dispatch(getAllFail(error.toString()));
             });
     };
 }
