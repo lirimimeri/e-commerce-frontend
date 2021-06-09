@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { Alert } from 'react-bootstrap';
-import Notification, { notify } from 'react-notify-toast';
+import { notify } from 'react-notify-toast';
 
 import { addProduct } from '../store/actions';
 import Product from './ProductCard';
@@ -27,7 +27,6 @@ function Products() {
 
     return (
         <>
-            <Notification />
             {errorMessage && <Alert variant='danger'>{errorMessage}</Alert>}
             <Row className='d-flex'>
                 {productsData &&

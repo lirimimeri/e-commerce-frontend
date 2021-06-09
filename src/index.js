@@ -10,14 +10,15 @@ import { Provider } from 'react-redux';
 //Local files imports.
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+// import '../node_modules/font-awesome/css/font-awesome.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import rootReducer from './store/reducers/index';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
