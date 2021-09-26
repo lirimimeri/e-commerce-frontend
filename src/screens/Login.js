@@ -31,7 +31,7 @@ const Login = () => {
 
         const { exp } = jwt.decode(token);
         if (new Date() < new Date(exp * 1000)) history.push('/');
-    }, [token]);
+    }, [token, history]);
 
     const login = (data) => {
         if (!isregister) dispatch(auth(data));
@@ -39,69 +39,69 @@ const Login = () => {
     };
 
     return (
-        <Col sm={10} md={6} lg={4} className='text-center mx-auto p-0 mt-5'>
-            <p className='text-danger'>{errorMessage}</p>
-            <Card className='p-3 text-left'>
+        <Col sm={10} md={6} lg={4} className="text-center mx-auto p-0 mt-5">
+            <p className="text-danger">{errorMessage}</p>
+            <Card className="p-3 text-left">
                 <Form onSubmit={handleSubmit(login)}>
-                    <label for='email'>E-Mail Address</label>
+                    <label for="email">E-Mail Address</label>
                     <InputGroup>
                         <Controller
-                            name='email'
+                            name="email"
                             control={control}
-                            defaultValue=''
+                            defaultValue=""
                             render={({ onChange, value }) => (
                                 <Form.Control
                                     onChange={onChange}
                                     value={value}
-                                    className='form-control'
-                                    placeholder='Enter E-Mail'
+                                    className="form-control"
+                                    placeholder="Enter E-Mail"
                                 />
                             )}
                         />
                         <InputGroup.Append>
                             <InputGroup.Text>
-                                <i className='fa fa-envelope' />
+                                <i className="fa fa-envelope" />
                             </InputGroup.Text>
                         </InputGroup.Append>
                     </InputGroup>
 
                     {errors && errors.email && errors.email.type === 'required' && (
-                        <small className='text-danger d-block'>This field is required</small>
+                        <small className="text-danger d-block">This field is required</small>
                     )}
                     {errors && errors.email && errors.email.type === 'pattern' && (
-                        <small className='text-danger d-block'>{errors.email.message}</small>
+                        <small className="text-danger d-block">{errors.email.message}</small>
                     )}
 
-                    <label className='mt-3'>Password</label>
+                    <label className="mt-3">Password</label>
                     <InputGroup>
                         <Controller
-                            name='password'
+                            name="password"
                             control={control}
-                            defaultValue=''
+                            defaultValue=""
                             render={({ onChange, value }) => (
                                 <Form.Control
                                     onChange={onChange}
                                     value={value}
-                                    type='password'
-                                    className='form-control'
-                                    placeholder='Enter Password'
+                                    type="password"
+                                    className="form-control"
+                                    placeholder="Enter Password"
                                 />
                             )}
                         />
                         <InputGroup.Append>
                             <InputGroup.Text>
-                                <i className='fa fa-key' />
+                                <i className="fa fa-key" />
                             </InputGroup.Text>
                         </InputGroup.Append>
                     </InputGroup>
 
                     {errors && errors.password && errors.password.type === 'required' && (
-                        <small className='text-danger d-block'>This field is required</small>
+                        <small className="text-danger d-block">This field is required</small>
                     )}
 
-                    <Button type='submit' variant='primary' className='mt-3' block>
+                    <Button type="submit" variant="primary" className="mt-3" block>
                         {loading ? (
-                            <Spinner animation='border' size='sm' className='float-right mt-1' />
+                            <Spinner animation="border" size="sm" className="float-right mt-1" />
                         ) : isregister ? (
                             'Register'
                         ) : (
@@ -109,9 +109,9 @@ const Login = () => {
                         )}
                     </Button>
 
-                    <div class='mt-4 text-center'>
+                    <div class="mt-4 text-center">
                         Don't have an account? {' ' /*  eslint-disable-next-line */}
-                        <a onClick={() => setRegister(!isregister)} href='#'>
+                        <a onClick={() => setRegister(!isregister)} href="#">
                             {isregister ? 'Log In' : 'Create One'}
                         </a>
                     </div>

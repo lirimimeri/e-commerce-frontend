@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Row } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { Alert } from 'react-bootstrap';
@@ -10,7 +10,10 @@ import Product from './ProductCard';
 function Products() {
     const dispatch = useDispatch();
 
-    const { products, cart } = useSelector(({ products, cart }) => ({
+    const {
+        products,
+        //  cart
+    } = useSelector(({ products, cart }) => ({
         products,
         cart,
     }));
@@ -27,8 +30,8 @@ function Products() {
 
     return (
         <>
-            {errorMessage && <Alert variant='danger'>{errorMessage}</Alert>}
-            <Row className='d-flex'>
+            {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+            <Row className="d-flex">
                 {productsData &&
                     productsData.map((product) => (
                         <Product

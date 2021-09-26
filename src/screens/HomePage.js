@@ -14,7 +14,7 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(getAllProducts());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         if (!errorMessage) return;
@@ -27,7 +27,7 @@ const HomePage = () => {
             <Notifications />
             <Header />
             <ProductCarousel />
-            <Container className='mt-3'>
+            <Container className="mt-3">
                 <Products />
             </Container>
         </div>
