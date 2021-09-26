@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
         case DECREASE_QUANTITY:
             return state[action.index]['quantity'] - 1;
         case UPDATE_CART:
-            return action.payload;
+            return [...action.payload];
         default:
             return state;
     }

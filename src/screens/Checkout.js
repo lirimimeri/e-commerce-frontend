@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Container, Row, Col, Button, Modal, FormCheck, Spinner } from 'react-bootstrap';
 
 import Header from '../components/Header';
@@ -10,8 +11,12 @@ const Checkout = () => {
     const [showModal, setShowModal] = useState(false);
     const [payInPerson, setPayInPerson] = useState(true);
 
+    const cart = useSelector((state) => state.cart);
+
     useEffect(() => {
         document.title = 'Checkout  |  KingKong Shop';
+
+        console.log(cart);
     }, []);
 
     useEffect(() => {

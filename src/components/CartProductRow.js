@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, FormControl } from 'react-bootstrap';
 
-const CartProduct = ({ name, count, price, onIncrement, onDecrement, onDelete }) => {
+const CartProduct = ({ name, quantity, price, onDelete }) => {
     return (
         <div
             className="d-flex justify-content-around my-3 py-2 w-100"
@@ -13,7 +13,7 @@ const CartProduct = ({ name, count, price, onIncrement, onDecrement, onDelete })
             />
             <h5 className="align-self-center">{name}</h5>
             <div className="d-flex align-self-center">
-                <FormControl type="number" style={{ width: 60 }} defaultValue={count || ''} />
+                <FormControl type="number" style={{ width: 60 }} defaultValue={quantity || ''} />
             </div>
             <i
                 className="fa fa-trash fa-2x align-self-center text-secondary"

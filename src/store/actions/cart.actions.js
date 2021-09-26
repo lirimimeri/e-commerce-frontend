@@ -56,4 +56,4 @@ function decreaseQuantity(index) {
     };
 }
 
-export { addProduct, removeProduct, increseQuantity, decreaseQuantity };
+export { addProduct, removeProduct, increseQuantity, decreaseQuantity, updateCart };
