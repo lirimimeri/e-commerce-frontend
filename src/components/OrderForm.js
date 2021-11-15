@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 const OrderForm = () => {
     return (
@@ -13,23 +13,6 @@ const OrderForm = () => {
                 <Form.Label>Address</Form.Label>
                 <Form.Control placeholder="1234 Main St" />
             </Form.Group>
-
-            <Row className="mb-3">
-                <Form.Group as={Col} controlId="formGridCity">
-                    <Form.Label>City</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridState">
-                    <Form.Label>State</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridZip">
-                    <Form.Label>Zip</Form.Label>
-                    <Form.Control />
-                </Form.Group>
-            </Row>
         </Form>
     );
 };

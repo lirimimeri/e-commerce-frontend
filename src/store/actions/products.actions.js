@@ -1,5 +1,5 @@
 import * as actionTypes from '../types';
-import { Axios } from '../../configs';
+import { Axios } from '../../configs/configs';
 
 function getAllStart() {
     return {
@@ -68,14 +68,12 @@ export function getAllProducts() {
         dispatch(getAllStart());
         Axios.get('/products')
             .then(({ data }) => {
-                if (!data.success)
-                    return dispatch(getAllFail('Error fetching data!'));
+                if (!data.success) return dispatch(getAllFail('Error fetching data!'));
 
                 dispatch(getAllSuccess(data.data.products));
             })
             .catch((error) => {
-                if (error.response?.data)
-                    return dispatch(getAllFail(error.response.data.message));
+                if (error.response?.data) return dispatch(getAllFail(error.response.data.message));
 
                 if (error.message) return dispatch(getAllFail(error.message));
 
@@ -89,17 +87,14 @@ export function getOneProduct(id) {
         dispatch(getOneStart());
         Axios.get(`/products/${id}`)
             .then(({ data }) => {
-                if (!data.success)
-                    return dispatch(getOneFail('Error fetching data!'));
+                if (!data.success) return dispatch(getOneFail('Error fetching data!'));
                 dispatch(getOneSuccess(data.data.product, data.data.comments));
             })
             .catch((error) => {
                 if (error.response && error.response.data.message)
                     return dispatch(getOneFail(error.response.data.message));
 
-                dispatch(
-                    getOneFail("Can't access server right now! Try again later")
-                );
+                dispatch(getOneFail("Can't access server right now! Try again later"));
             });
     };
 }
@@ -108,14 +103,12 @@ export const postComment = (postId, user, text) => (dispatch) => {
     dispatch(postCommentStart());
     Axios.post(`/products/${postId}/comment`, { user, text })
         .then(({ data }) => {
-            if (!data.success)
-                return dispatch(postCommentFail('Adding comment fail!'));
+            if (!data.success) return dispatch(postCommentFail('Adding comment fail!'));
 
             dispatch(postCommentSuccess(data.data.comment));
         })
         .catch((error) => {
-            if (error.response?.data)
-                return dispatch(postCommentFail(error.response.data.message));
+            if (error.response?.data) return dispatch(postCommentFail(error.response.data.message));
 
             if (error.message) return dispatch(postCommentFail(error.message));
 

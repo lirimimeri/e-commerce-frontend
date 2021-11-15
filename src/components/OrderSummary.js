@@ -1,7 +1,10 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
-const OrderSummary = () => {
+const SHIPPING_PRICE = 2.00;
+
+const OrderSummary = ({ subtotal }) => {
+
     return (
         <Col
             lg={3}
@@ -13,16 +16,16 @@ const OrderSummary = () => {
             <div>
                 <div className="d-flex justify-content-between">
                     <h6>SUBTOTAL: </h6>
-                    <b>30.00 $</b>
+                    <b>{subtotal.toFixed(2)} $</b>
                 </div>
                 <div className="d-flex justify-content-between">
-                    <h6>SHIPPING: </h6> <b>2.00 $</b>
+                    <h6>SHIPPING: </h6> <b>{SHIPPING_PRICE !== 0 ? SHIPPING_PRICE.toFixed(2) + " $" : "FREE"} </b>
                 </div>
             </div>
             <div className="d-flex justify-content-between border-top pt-2">
                 <h5 className=" ">TOTAL:</h5>
                 <h5>
-                    <b>32.00 $</b>
+                    <b>{(subtotal + SHIPPING_PRICE).toFixed(2)} $</b>
                 </h5>
             </div>
         </Col>

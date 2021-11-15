@@ -26,7 +26,7 @@ const HomePage = () => {
         <div>
             <Notifications />
             <Header />
-            <ProductCarousel />
+            {/* <ProductCarousel /> */}
             <Container className="mt-3">
                 <Products />
             </Container>
